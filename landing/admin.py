@@ -12,12 +12,14 @@ from landing.models import Metric, Value
 #     list_display = ['name', 'mail', 'date', 'amount_of_known_doctors']
 #     inlines = [KnownDoctorInline]
 #
-#
-# class KnownDoctorAdmin(admin.ModelAdmin):
-#     list_display = ['description', 'validated', 'used']
-#
-# admin.site.register(Lead, LeadAdmin)
-# admin.site.register(KnownDoctor, KnownDoctorAdmin)
 
-admin.site.register(Metric)
-admin.site.register(Value)
+class ValueAdmin(admin.ModelAdmin):
+    list_display = ['body', 'metric', 'time']
+
+
+class MetricAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+
+admin.site.register(Metric, MetricAdmin)
+admin.site.register(Value, ValueAdmin)
