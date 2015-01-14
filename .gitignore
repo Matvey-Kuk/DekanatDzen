@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+venv
+db.sqlite3
+.idea
+.DC_store
+*.pyc
