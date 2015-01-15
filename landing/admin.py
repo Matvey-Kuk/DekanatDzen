@@ -18,7 +18,7 @@ class ValueAdmin(admin.ModelAdmin):
 
 
 class MetricAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'visible']
 
 
 admin.site.register(Metric, MetricAdmin)

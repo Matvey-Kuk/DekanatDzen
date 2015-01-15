@@ -4,7 +4,7 @@ from landing.models import Metric, Value
 
 
 def index(request):
-    metrics = Metric.objects.all()
+    metrics = Metric.objects.filter(visible=True).all()
     try:
         block_width_percent = 100 / len(metrics)
     except Exception:

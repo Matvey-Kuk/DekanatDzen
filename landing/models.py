@@ -5,12 +5,17 @@ from django.core.validators import validate_email
 
 class Metric(models.Model):
     name = models.CharField(max_length=400, blank=False, verbose_name='Название')
+    visible = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
 
     def last_value(self):
-        return self.value_set.all().filter().order_by('-pk').get().body
+        try:
+            return self.value_set.all().filter().order_by('-pk')[0]
+        except Exception as e:
+            print(e)
+            return "??"
 
 
 class Value(models.Model):
