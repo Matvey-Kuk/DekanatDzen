@@ -5,7 +5,7 @@ from django.core.validators import validate_email
 
 class Metric(models.Model):
     name = models.CharField(max_length=400, blank=False, verbose_name='Название')
-    visible = models.BooleanField(default=False)
+    visible = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
