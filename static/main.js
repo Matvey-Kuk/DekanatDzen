@@ -55,6 +55,7 @@ $(document).ready(function () {
 
     initVideoSwitcher();
     initAudioSwitcher();
+    adjustFontSize();
 
 
     $('.music-switch').on('click', function () {
