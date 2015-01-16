@@ -49,136 +49,13 @@ function initMusic() {
     }
 }
 
-function pluralize(value, strings) {
-//    if (value > 100) {
-//        value = value % 100;
-//    }
-//
-//    firstDigit = value % 10;
-//    secondDigit = Math.floor(value / 10);
-//
-//    if (secondDigit != 1) {
-//        if (firstDigit == 1) {
-//            return strings[0];
-//        } else if (firstDigit > 1 && firstDigit < 5) {
-//            return strings[1];
-//        } else {
-//            return strings[2];
-//        }
-//    } else {
-//        return strings[2];
-//    }
-}
-
-
 $(window).on('resize', adjustFontSize);
 
 $(document).ready(function () {
 
-    var $time = $('.datetime .time');
-    setInterval(function () {
-        var dt = new Date();
-        var minutes = dt.getMinutes()
-        $time.text(dt.getHours() + ':' + (minutes < 10 ? "0" : "") + minutes)
-    }, 1000)
+    initVideoSwitcher();
+    initAudioSwitcher();
 
-//    if ($.cookie('asn2')) {
-//        $('.update-hint').hide();
-//    } else {
-//        setTimeout(function () {
-//            $('.update-hint').fadeOut();
-//        }, 15000)
-//    }
-//    $.cookie('asn2', true);
-//
-    adjustFontSize();
-//    var quotes = ['usd', 'eur', 'brent'];
-//    var elements = {};
-//
-//    var $clientsOnline = $('.clients-online span');
-//    var $body = $('body');
-//    var showed = false
-//
-//
-//    for (var i in quotes) {
-//        elements[i] = {};
-//        elements[i].$container = $('.quotes .item.' + quotes[i]);
-////        elements[i].$cell = $('.quotes .item.' + quotes[i] + ' .value');
-//    }
-//
-//    for (i in current) {
-//        elements[i].$cell.text(formatVal(current[i]));
-//    }
-//    var rubbrent = current[0] * current[2];
-////    $('.rubbrent').text(Math.round(rubbrent) + ' ' + pluralize(rubbrent, ['рубль', 'рубля', 'рублей']) + ' за баррель');
-//
-//
-//    var lastValuesUpdate = [0, 0, 0, 0];
-//
-//    function initWebsockets() {
-//        var conn = new WebSocket('ws://' + window.location.hostname + ':8888');
-//        conn.onmessage = function (e) {
-//            var values = e.data.split(';');
-//            for (i in values) {
-//                if (i == 3) {
-//                    if (!showed) {
-//                        $clientsOnline.parent().addClass('showed')
-//                        showed = true;
-//                    }
-//                    if ((new Date).getTime() - lastValuesUpdate[3] > 4000) {
-//                        lastValuesUpdate[3] = (new Date).getTime();
-//                        $clientsOnline.text(values[i])
-//                    }
-//                    continue;
-//                }
-//                if (i == 4) {
-//                    $body.attr('signature', values[i]);
-//                    continue;
-//                }
-//                if (i == 5) {
-//                    $("#morozSumm SPAN").text(parseInt(values[i]));
-//                    $("#morozSumm").addClass('shown')
-//                    continue;
-//                }
-//                if ((new Date).getTime() - lastValuesUpdate[i] > 2000) {
-//                    lastValuesUpdate[i] = (new Date).getTime();
-//                    var signClass = getSignClass(values[i], elements[i].$cell.text(), i != 2);
-//                    if (signClass) {
-//                        elements[i].$container.removeClass('plus').removeClass('minus')
-//                    }
-//                    elements[i].$container.addClass(signClass);
-//                    elements[i].$cell.text(formatVal(values[i]));
-//                }
-//            }
-//            var rubbrent = values[0] * values[2];
-////            $('.rubbrent').text(Math.round(rubbrent) + ' ' + pluralize(rubbrent, ['рубль', 'рубля', 'рублей']) + ' за баррель');
-//
-//        };
-
-//    }
-
-
-//    initWebsockets()
-//    setInterval(function () {
-//        console.log('watchdog')
-//        if ((new Date).getTime() - lastValuesUpdate[3] > 120) {
-//            initWebsockets()
-//        }
-//    }, 3600000)
-
-    initVideoSwitcher()
-    initAudioSwitcher()
-    //initMegaday();
-
-    var settingsOpened = false;
-    $('.settings-switch').on('click', function () {
-        if (!settingsOpened) {
-            $('.settings-window.video').addClass('showed')
-            $('.quotes').addClass('faded')
-            settingsOpened = true;
-            return false;
-        }
-    })
 
     $('.music-switch').on('click', function () {
         if (!settingsOpened) {
@@ -187,43 +64,13 @@ $(document).ready(function () {
             settingsOpened = true;
             return false;
         }
-    })
-
-    $('.contacts').on('click', function () {
-        if (!settingsOpened) {
-            $('.settings-window.info').addClass('showed')
-            $('.quotes').addClass('faded')
-            settingsOpened = true;
-            return false;
-        }
-    })
-
-    $('.rapture').on('click', function () {
-            $('.settings-window.info').removeClass('showed')
-            $('.settings-window.donate').addClass('showed')
-            settingsOpened = true;
-            return false;
-    })
-
-
-    $(document).on('click', function (e) {
-        if (settingsOpened) {
-            if (!$('.settings-window').is(e.target) && $('.settings-window').has(e.target).length === 0
-                || $('.settings-window .close').is(e.target)
-            ) {
-                $('.settings-window').removeClass('showed')
-                $('.quotes').removeClass('faded')
-                settingsOpened = false;
-                return false;
-            }
-        }
     });
 });
 
 
 function initVideoSwitcher() {
     var videos = ['ocean', 'space', 'aurora', 'snow', 'mountains', 'mountains2', 'rain', 'night', 'volcano', 'meduza', 'desert', 'moscow1', 'waterfall', 'waterfall2', 'waterfall3', 'singapore', 'sea', 'fire', 'palms', 'clever', ];
-    var video = $.cookie('video1')
+    var video = $.cookie('video1');
     if (!video || videos.indexOf(video) == -1) {
         video = videos[0]
     }
