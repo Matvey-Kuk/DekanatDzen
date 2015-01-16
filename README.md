@@ -6,8 +6,16 @@
 # Как внести свою лепту в проект
 Технологии: Pyhton 3, Django Framework
 
-* Fork
-* Commit
-* Pull Request
+* Сделать Fork
+* Запустить
+    ```
+    pip3 install -r requirements.txt;
+    
+    python3 manage.py migrate
+    
+    python3 manage.py runserver 0.0.0.0:80
+    ```
+* Сделать Commit
+* Оформить Pull Request
 
-Фичреквесты и багрепорты принимаются в Issues здесь, на гитхабе.
+Фичреквесты и багрепорты принимаются в issues здесь, на гитхабе.
