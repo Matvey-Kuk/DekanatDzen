@@ -25,3 +25,7 @@ class Value(models.Model):
 
     def __str__(self):
         return str(self.body)
+
+class Video(models.Model):
+    file_name = models.CharField(max_length=400, blank=False, verbose_name='Название видеофайла')
+    enabled = models.BooleanField(default=False)

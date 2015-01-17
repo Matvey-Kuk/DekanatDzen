@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from landing.models import Metric, Value
+from landing.models import Metric, Value, Video
 
 
 # class KnownDoctorInline(admin.StackedInline):
@@ -20,6 +20,10 @@ class ValueAdmin(admin.ModelAdmin):
 class MetricAdmin(admin.ModelAdmin):
     list_display = ['name', 'visible']
 
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ['file_name', 'enabled']
+
 
 admin.site.register(Metric, MetricAdmin)
 admin.site.register(Value, ValueAdmin)
+admin.site.register(Video, VideoAdmin)
