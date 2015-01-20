@@ -70,32 +70,32 @@ $(document).ready(function () {
 
 
 function initVideoSwitcher() {
-    var videos = ['ocean', 'space', 'aurora', 'snow', 'mountains', 'mountains2', 'rain', 'night', 'volcano', 'meduza', 'desert', 'moscow1', 'waterfall', 'waterfall2', 'waterfall3', 'singapore', 'sea', 'fire', 'palms', 'clever', ];
-    var video = $.cookie('video1');
-    if (!video || videos.indexOf(video) == -1) {
-        video = videos[0]
-    }
-    var path = 'video/' + video;
-    $("#container").vide(path);
-    for (var i in videos) {
-        $('.video-switcher').append('<a href="' + videos[i] + '" ' + (video == videos[i] ? 'class="active"' : '') + ' style="background-image:url(video/75x75/' + videos[i] + '.jpg)"></a>');
-    }
-
-    $("#container").removeClass().addClass(video)
-
-
-    $('.video-switcher').on('click', 'a', function () {
-        $(".video-container").addClass('faded');
-        $(this).addClass('active').siblings().removeClass('active');
-        $.cookie('video1', $(this).attr('href'));
-        var path = 'video/' + $(this).attr('href');
-        $("#container").removeClass().addClass($(this).attr('href'))
-        setTimeout(function () {
-            $("#container").vide(path);
-        }, 400)
-
-        return false;
-    });
+//    var videos = ['ocean', 'space', 'aurora', 'snow', 'mountains', 'mountains2', 'rain', 'night', 'volcano', 'meduza', 'desert', 'moscow1', 'waterfall', 'waterfall2', 'waterfall3', 'singapore', 'sea', 'fire', 'palms', 'clever', ];
+//    var video = $.cookie('video1');
+//    if (!video || videos.indexOf(video) == -1) {
+//        video = videos[0]
+//    }
+//    var path = 'video/' + video;
+//    $("#container").vide(path);
+//    for (var i in videos) {
+//        $('.video-switcher').append('<a href="' + videos[i] + '" ' + (video == videos[i] ? 'class="active"' : '') + ' style="background-image:url(video/75x75/' + videos[i] + '.jpg)"></a>');
+//    }
+//
+//    $("#container").removeClass().addClass(video)
+//
+//
+//    $('.video-switcher').on('click', 'a', function () {
+//        $(".video-container").addClass('faded');
+//        $(this).addClass('active').siblings().removeClass('active');
+//        $.cookie('video1', $(this).attr('href'));
+//        var path = 'video/' + $(this).attr('href');
+//        $("#container").removeClass().addClass($(this).attr('href'))
+//        setTimeout(function () {
+//            $("#container").vide(path);
+//        }, 400)
+//
+//        return false;
+//    });
 }
 
 function initAudioSwitcher() {
